@@ -60,7 +60,7 @@ function solution(str){
 
 console.log(solution('maxim'));
 
-// 6 .Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+// 6. Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
 
 // Your task is to write a function maskify, which changes all but the last four characters into '#'.
 
@@ -75,3 +75,42 @@ function maskify(str) {
 
 console.log(maskify('4556364607935616'));
 
+// 7. It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+
+function removeChar(str){
+    return str.slice(1, -1);
+    
+    // let arr = str.split('');
+
+    // arr.shift();
+    // arr.pop();
+
+    // let result = arr.join('');
+
+    // return result;
+}
+
+console.log(removeChar('maxim'));
+
+// 8. Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+// Example
+// createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+
+function createPhoneNumber(numbers){
+  const phoneNumber = '(' + numbers.slice(0, 3).join('') + ') ' + numbers.slice(3, 6).join('') + '-' + numbers.slice(6).join('');
+
+  return phoneNumber;
+}
+
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+// 9.Create a function called args_count that returns the number of arguments provided
+
+function args_count () {
+    return arguments.length;
+}
+
+// function args_count(...rest) {
+//     return rest.length;
+// }
