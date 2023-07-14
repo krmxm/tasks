@@ -114,3 +114,106 @@ function args_count () {
 // function args_count(...rest) {
 //     return rest.length;
 // }
+
+// 10. In this kata you should simply determine, whether a given year is a leap year or not. In case you don't know the rules, here they are:
+
+// years divisible by 4 are leap years
+// but years divisible by 100 are not leap years
+// but years divisible by 400 are leap years
+// Additional Notes:
+
+// Only valid years (positive integers) will be tested, so you don't have to validate them
+// Examples can be found in the test fixture.
+
+function isLeapYear(year) {
+    if( (year % 4 == 0 && year % 100 !== 0) || year % 400 == 0 ) {
+        return true;
+    } else {
+        return false;
+    }
+
+    // return (year % 100 !== 0 && year % 4 === 0) || year % 400 === 0;
+}
+
+console.log(isLeapYear(2020));
+
+// 11.  DESCRIPTION:
+// If you can't sleep, just count sheep!!
+
+// Task:
+// Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
+
+const countSheep = function (num){
+  let str = '';
+  for(let i = 1; i <= num; i++) {
+    str += `${i} sheep...`;
+  }
+
+  return str;
+};
+
+// 12. DESCRIPTION:
+// In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+
+// At the end of the first year there will be: 
+// 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+// At the end of the 2nd year there will be: 
+// 1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+
+// At the end of the 3rd year there will be:
+// 1141 + 1141 * 0.02 + 50 => 1213
+
+// It will need 3 entire years.
+// More generally given parameters:
+
+// p0, percent, aug (inhabitants coming or leaving each year), p (population to equal or surpass)
+
+// the function nb_year should return n number of entire years needed to get a population greater or equal to p.
+
+// aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
+
+// Examples:
+// nb_year(1500, 5, 100, 5000) -> 15
+// nb_year(1500000, 2.5, 10000, 2000000) -> 10
+
+function nbYear(p0, percent, aug, p) {
+    let years;
+
+    for (years = 0; p0 < p; years++) {
+        p0 += Math.floor(p0 * (percent / 100) + aug);
+    }
+
+    return years;
+}
+
+// 13. A perfect number is a number in which the sum of its divisors (excluding itself) are equal to itself.
+
+// Write a function that can verify if the given integer n is a perfect number, and return True if it is, or return False if not.
+
+// Examples
+// n = 28 has the following divisors: 1, 2, 4, 7, 14, 28
+
+// 1 + 2 + 4 + 7 + 14 = 28 therefore 28 is a perfect number, so you should return True
+
+// Another example:
+
+// n = 25 has the following divisors: 1, 5, 25
+
+// 1 + 5 = 6 therefore 25 is not a perfect number, so you should return False
+
+function isPerfect(n) {
+    let arr = [];
+    for (let i = 1; i < n; i++) {
+        if (n % i == 0) {
+            arr.push(i);
+        }
+    }
+    if (arr.reduce((a, b) => a + b, 0) === n) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(isPerfect(496));
